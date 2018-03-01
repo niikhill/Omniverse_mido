@@ -2887,7 +2887,6 @@ static int _ffs_func_bind(struct usb_configuration *c,
 	const int high = !!func->ffs->hs_descs_count;
 	const int super = !!func->ffs->ss_descs_count;
 
-
 	int fs_len, hs_len, ss_len, ret, i;
 
 	/* Make it a single chunk, less management later on */
@@ -3606,14 +3605,6 @@ static void ffs_closed(struct ffs_data *ffs)
 	if (opts->no_configfs || !opts->func_inst.group.cg_item.ci_parent
 	    || !atomic_read(&opts->func_inst.group.cg_item.ci_kref.refcount))
 		goto done;
-
-
-	
-	ffs_dev_unlock();
-
-	if (test_bit(FFS_FL_BOUND, &ffs->flags))
-		unregister_gadget_item(ci);
-	return;
 
 done:
 	ffs_dev_unlock();
