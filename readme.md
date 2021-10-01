@@ -1,1 +1,2 @@
+# [Deprecated]
 MIDO KERNEL ORIONIS
